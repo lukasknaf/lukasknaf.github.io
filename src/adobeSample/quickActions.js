@@ -60,11 +60,10 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
     const module = await getModule();
     /* inputFile: file input picker */
     // var inputFile = document.getElementById('fileInput');
-    var base64Asset;
 
     /* base64Asset: base64 representation we pass into QA function */
     try {
-    	base64Asset = await window.electronAPI.retrieveImage()
+    	var base64Asset = await window.electronAPI.retrieveImage()
 	console.log('Image: ', base64Asset.substring(0,30))
     } catch (error) {
 	console.log('No image supplied')
@@ -130,8 +129,7 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
         let exportConfig = exportOptions;
         switch (qa_id) {
             case 'convert-to-jpg':
-		if (docConfig.asset.length > 20) {
-			console.log('launching with image:' + docConfig)
+		if (docConfig.asset.data.length > 20) {
                 	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
 		} else {
 			docConfig = {};
