@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" class="spectrum spectrum--medium spectrum--light spectrum--express">
+
+<head>
+    <title>Adobe Express Embed SDK Sample</title>
+    <link rel="stylesheet" href="../../node_modules/@spectrum-css/tokens/dist/index.css">
+    <link rel="stylesheet" href="../../node_modules/@spectrum-css/page/dist/index-vars.css">
+    <link rel="stylesheet" href="../../node_modules/@spectrum-css/button/dist/index-vars.css">
+    <link rel="stylesheet" href="../../node_modules/@spectrum-css/typography/dist/index-vars.css">
+    <link rel="stylesheet" href="../../node_modules/@spectrum-css/sidenav/dist/index-vars.css">
+    <link rel="stylesheet" href="../../node_modules/@spectrum-css/textfield/dist/index-vars.css">
+    <style>
+        .sample {
+            margin: 3%;
+        }
+
+        hr.solid {
+            border-top: 2px solid #bbb;
+            margin: 2% 0%;
+        }
+
+        image-buttons,
+        video-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            gap: 1rem;
+            place-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sample spectrum-Typography">
+        <h1 class="spectrum-Heading spectrum-Heading--sizeXXL"> Embed SDK: Video quick actions </h1>
+        <p class="spectrum-Body spectrum-Body--sizeL">
+            This sample surfaces <b>three export buttons</b> to the user after a quick action workflow is complete:
+        </p>
+        <p class="spectrum-Body spectrum-Body--sizeL">1. [Native] <b>Download</b>: Downloads the modified asset to the
+            user's computer.
+            <br>2. [Native] <b>Customize</b>: Sends user to an embedded editor to continue editing the modified asset.
+            <br>3. [Custom] <b>Save image</b>: Save and display the modified asset on this page. Use the button below to
+            hide the image.
+        </p>
+        <hr class="solid">
+        <p class="spectrum-Body spectrum-Body--sizeL">If a file is selected, it will continue to be used as an input
+            until you click <b>Reset</b>.</p>
+        <div id="video-buttons">
+            <button id="crop-video"
+                class="spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeL">
+                <span class="spectrum-Button-label">Crop Video</span>
+            </button>
+            <button id="resize-video"
+                class="spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeL">
+                <span class="spectrum-Button-label">Resize Video</span>
+            </button>
+            <button id="convert-to-gif"
+                class="spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeL">
+                <span class="spectrum-Button-label">Convert to GIF</span>
+            </button>
+            <button id="convert-to-mp4"
+                class="spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeL">
+                <span class="spectrum-Button-label">Convert to MP4</span>
+            </button>
+            <button id="merge-videos"
+                class="spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeL">
+                <span class="spectrum-Button-label">Merge Videos</span>
+            </button>
+            <button id="trim-video"
+                class="spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeL">
+                <span class="spectrum-Button-label">Trim Video</span>
+            </button>
+            <button id="animate-from-audio"
+                class="spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeL">
+                <span class="spectrum-Button-label">Animate from Audio</span>
+            </button>
+            <button id="caption-video"
+                class="spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeL">
+                <span class="spectrum-Button-label">Caption Video</span>
+            </button>
+            <button id="clear"
+                class="spectrum-Button spectrum-Button--outline spectrum-Button--secondary spectrum-Button--sizeL">
+                <span class="spectrum-Button-label">Hide</span>
+            </button>
+            <hr class="solid">
+            <h2 class="spectrum-Heading spectrum-Heading--sizeXL"> Full editor</h2>
+            <p class="spectrum-Body spectrum-Body--sizeL">
+                Go back to the full editor sample.
+            </p>
+            <button id="full-editor"
+                class="spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeL">
+                <span class="spectrum-Button-label">Try the full editor</span>
+            </button>
+
+            <hr class="solid">
+            <h2 class="spectrum-Heading spectrum-Heading--sizeXL"> Modules</h2>
+            <p class="spectrum-Body spectrum-Body--sizeL">
+                Modules allow you to surface contextually relevant mini-editing experiences to your users. We currently
+                support Text to Image and Edit Image modules.
+            </p>
+            <button id="mini-editor"
+                class="spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeL">
+                <span class="spectrum-Button-label">Try modules</span>
+            </button>
+
+            <hr class="solid">
+            <h2 class="spectrum-Heading spectrum-Heading--sizeXL"> Quick actions</h2>
+            <button id="image-qa"
+                class="spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeL">
+                <span class="spectrum-Button-label">Try image QA</span>
+            </button>
+        </div>
+        <img id="container" style="visibility:hidden;" />
+    </div>
+    <script type="module" src="../adobeSample/videoQuickActions.js"></script>
+</body>
+
+</html>

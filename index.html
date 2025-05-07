@@ -1,1 +1,48 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en" class="spectrum spectrum--medium spectrum--light spectrum--express">
+
+<head>
+    <title>Adobe Express Embed SDK Sample</title>
+    <link rel="stylesheet" href="node_modules/@spectrum-css/tokens/dist/index.css">
+    <link rel="stylesheet" href="node_modules/@spectrum-css/page/dist/index-vars.css">
+    <link rel="stylesheet" href="node_modules/@spectrum-css/button/dist/index-vars.css">
+    <link rel="stylesheet" href="node_modules/@spectrum-css/typography/dist/index-vars.css">
+    <style>
+        .sample {
+            margin: 3%;
+        }
+
+        hr.solid {
+            border-top: 2px solid #bbb;
+            margin: 2% 0%;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="image-container" style="visibility: hidden;">
+    <!-- <script type="module" src="src/adobeSample/quickActions.js"></script> -->
+    <!-- <script src="https://cc-embed.adobe.com/sdk/v4/CCEverywhere.js"></script> -->
+    <script type="module">
+
+    // (async () => {
+    //     const ccEverywhere = await window.CCEverywhere.initialize({
+    //     clientId: '9ec2125120734d5b865543f0c75b8c18',
+    //     appName: 'expressPlugin',
+    //         });
+    // })();
+
+    // const { quickAction } = await window.CCEverywhere.initialize({
+    //     clientId: '9ec2125120734d5b865543f0c75b8c18',
+    //     appName: 'expressPlugin',
+    //     });
+
+    // quickAction.convertToJPEG();
+
+    </script>
+    <script type='module' src='src/index.js'></script>
+    <script type="module" src="src/adobeSample/quickActions.js"></script>
+    
+</body>
+
+</html>
