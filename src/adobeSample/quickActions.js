@@ -65,13 +65,6 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
     try {
     	var base64Asset = await window.electronAPI.retrieveImage()
 	console.log('Image: ', base64Asset.substring(0,30))
-    var docConfig = {  
-        asset: {
-            data: base64Asset,
-            dataType: "base64",
-            type: "image",
-            },
-        }
     } catch (error) {
 	console.log('No image supplied')
 	docConfig = null
