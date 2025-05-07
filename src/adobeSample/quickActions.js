@@ -60,10 +60,11 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
     const module = await getModule();
     /* inputFile: file input picker */
     // var inputFile = document.getElementById('fileInput');
+    var base64Asset;
 
     /* base64Asset: base64 representation we pass into QA function */
     try {
-    	var base64Asset = await window.electronAPI.retrieveImage()
+    	base64Asset = await window.electronAPI.retrieveImage()
 	console.log('Image: ', base64Asset.substring(0,30))
     } catch (error) {
 	console.log('No image supplied')
@@ -133,9 +134,7 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
 			console.log('launching with image:' + docConfig)
                 	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
 		} else {
-			console.log(docConfig.asset.length)
 			docConfig = {};
-			console.log('launching wihtout image')
                 	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
 		}
                 break;
