@@ -52,17 +52,24 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
         },
         onError: (err) => {
             console.error('Error received is', err.toString())
+	    window.close();
         }
     }
 
     const quickAction = await getQuickActions();
     const module = await getModule();
-
     /* inputFile: file input picker */
     // var inputFile = document.getElementById('fileInput');
 
     /* base64Asset: base64 representation we pass into QA function */
-    var base64Asset = document.getElementById('image-container').src;
+    try {
+    	var base64Asset = await window.electronAPI.retrieveImage()
+	console.log('Image: ', base64Asset.substring(0,18))
+    } catch (error) {
+	console.log('No image supplied')
+	docConfig = null
+	base64Asset = null
+    }
     /* appImage:  the image container displayed in sample */
     // var appImage = document.getElementById('image-container');
     var docConfig = {  
@@ -122,25 +129,44 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
         let exportConfig = exportOptions;
         switch (qa_id) {
             case 'convert-to-jpg':
-		console.log(window.electronAPI.GetQuickAction() + 'From elelctornAPI')
-                quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
+		if (docConfig.asset.length > 20) {
+                	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
+		} else {
+			docConfig = {};
+                	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
+		}
                 break;
             case 'convert-to-png':
-                quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
+		if (docConfig.asset.length > 20) {
+		        var pngData = docConfig.asset.data
+                	docConfig.asset.data = pngData.replace('image/png', 'image/jpeg')
+                	quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
+		} else {
+			docConfig = {};
+                	quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
+		}
                 break;
             case 'convert-to-svg':
-                quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
+		if (docConfig.asset.length > 20) {
+                	quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
+		} else {
+			docConfig = {};
+                	quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
+		}
                 break;
             case 'crop-image':
+		docConfig = {}
                 quickAction.cropImage(docConfig, appConfig, exportConfig, modalParams);
                 break;
             case 'resize-image':
+		docConfig = {}
                 quickAction.resizeImage(docConfig, appConfig, exportConfig, modalParams);
                 break;
             case 'remove-background':
                 quickAction.removeBackground(docConfig, appConfig, exportConfig, modalParams);
                 break;
             case 'generate-qr-code':
+                docConfig = {};
                 quickAction.generateQRCode(docConfig, appConfig, exportConfig, modalParams);
                 break;
             case 'convert-to-gif':
@@ -181,28 +207,7 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
         }
     };
 
-
-    // Button event listeners 
-
-    // let imageButtons = document.querySelectorAll('#image-buttons button');
-    // imageButtons.forEach((button) => {
-    //     button.addEventListener('click', () => {
-    //         imageQuickAction(button.id)
-    //     })
-    // })
-
-    // document.getElementById('clear').addEventListener('click', () => {
-    //     appImage.src = null;
-    //     appImage.style.visibility = "hidden";
-    // })
-
-    // document.getElementById('reset').addEventListener('click', () => {
-    //     inputFile.value = '';
-    //     base64Asset = null;
-    //     appImage.src = null;
-    // })
-
-      // Use the 'location.search' property to get the URL query string
+    // Use the 'location.search' property to get the URL query string
   const queryString = window.location.search;
 
   // Parse the query parameters from the URL
@@ -215,12 +220,6 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
   console.log('Key:', key);
   console.log('Image prompt in vite:', imagePrompt);
 
-    if (key !== null) {
-        console.log('launching ' + key)
-        imageQuickAction(key);
-    } else if (imagePrompt !== null) {
-        //console.log('launching' + imagePrompt)
-        //textToImageModule(imagePrompt) 
-    }
-    else {console.log('No input ' + key + imagePrompt)}
+
+    imageQuickAction(key);
 })();
