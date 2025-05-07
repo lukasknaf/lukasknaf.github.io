@@ -67,6 +67,7 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
 	console.log('Image: ', base64Asset.substring(0,30))
     } catch (error) {
 	console.log('No image supplied')
+    console.log(error)
 	docConfig = null
 	base64Asset = null
     }
