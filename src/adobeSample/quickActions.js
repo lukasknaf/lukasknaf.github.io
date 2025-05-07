@@ -130,9 +130,11 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
         switch (qa_id) {
             case 'convert-to-jpg':
 		if (docConfig.asset.length > 20) {
+			console.log('launching with image:' + docConfig)
                 	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
 		} else {
 			docConfig = {};
+			console.log('launching wihtout image')
                 	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
 		}
                 break;
