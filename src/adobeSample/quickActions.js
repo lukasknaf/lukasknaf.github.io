@@ -133,6 +133,7 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
 			console.log('launching with image:' + docConfig)
                 	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
 		} else {
+			console.log(docConfig.asset.length)
 			docConfig = {};
 			console.log('launching wihtout image')
                 	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
