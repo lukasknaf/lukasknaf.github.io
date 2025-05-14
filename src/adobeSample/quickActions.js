@@ -86,7 +86,7 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
 
     var docConfigPNG = {  
         asset: {
-            data: pngData,
+            data: jpegData,
             dataType: "base64",
             type: "image",
             },
