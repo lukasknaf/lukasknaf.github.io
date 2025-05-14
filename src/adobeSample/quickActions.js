@@ -159,8 +159,34 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
                 	quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
 		} else {
 			    docConfig = {};
-                exportConfig = exportOptions
-                	quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
+                const exportConfig2 = [
+                                    {
+                                      action: {
+                                        context: 'new',
+                                        target: 'express'
+                                      },
+                                      id: 'editor',
+                                      label: 'Open in Adobe Express',
+                                      style: {
+                                        uiType: 'button'
+                                      }
+                                  }, 
+                    		   {
+                                    action: {
+                                      target: 'publish',
+                                      outputype: "URL",
+                                      closeTargetOnExport: true
+                                    },
+                                    id: 'saveToHostApp',
+                                    label: 'Save in App',
+                                    style: {
+                                      uiType: 'button'
+                                    },
+                                  }
+                              ]
+                	// quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
+
+                    quickAction.convertToSVG(docConfig, appConfig,  exportConfig2)
 		}
                 break;
             case 'crop-image':
