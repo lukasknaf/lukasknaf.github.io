@@ -64,7 +64,7 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
     /* base64Asset: base64 representation we pass into QA function */
     try {
     	var base64Asset = await window.electronAPI.retrieveImage()
-	console.log('Image: ', base64Asset.substring(0,30))
+	    console.log('Image: ', base64Asset)
     } catch (error) {
 	console.log('No image supplied')
     console.log(error)
@@ -140,8 +140,8 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
                             exportConfig = exportOptions
                             quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
                 }
-                break;
-
+                        break;
+                        
             case 'convert-to-jpg':
 		if (docConfig.asset.data.length > 20) {
                 	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
@@ -159,34 +159,8 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
                 	quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
 		} else {
 			    docConfig = {};
-                const exportConfig2 = [
-                                    {
-                                      action: {
-                                        context: 'new',
-                                        target: 'express'
-                                      },
-                                      id: 'editor',
-                                      label: 'Open in Adobe Express',
-                                      style: {
-                                        uiType: 'button'
-                                      }
-                                  }, 
-                    		   {
-                                    action: {
-                                      target: 'publish',
-                                      outputype: "URL",
-                                      closeTargetOnExport: true
-                                    },
-                                    id: 'saveToHostApp',
-                                    label: 'Save in App',
-                                    style: {
-                                      uiType: 'button'
-                                    },
-                                  }
-                              ]
-                	// quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
-
-                    quickAction.convertToSVG(docConfig, appConfig,  exportConfig2)
+                exportConfig = exportOptions
+                	quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
 		}
                 break;
             case 'crop-image':
