@@ -151,7 +151,7 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
                                     type: "image",
                                     },
                                 }
-
+                            console.log('Image after conversion: ', pngData.substring(0,30))
                             quickAction.convertToPNG(docConfigPNG, appConfig, exportConfig, modalParams);
                 } else {
                     docConfig = {};
