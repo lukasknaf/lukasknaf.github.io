@@ -1,5 +1,5 @@
 import {getModule, getQuickActions} from '../services/ccEverywhere.js';
-
+var base64Asset = ""
 (async () => {
     const initializeParams = {
         clientId: 'c8afc3542ba44b0f951f736e02c9b861',
@@ -62,8 +62,9 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
     // var inputFile = document.getElementById('fileInput');
 
     /* base64Asset: base64 representation we pass into QA function */
+    
     try {
-    	var base64Asset = await window.electronAPI.retrieveImage()
+    	base64Asset = await window.electronAPI.retrieveImage()
 	    console.log('Image: ', base64Asset)
     } catch (error) {
 	console.log('No image supplied')
@@ -150,8 +151,6 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
                 	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
 		}
                 break;
-
-
 
             case 'convert-to-svg':
 		if (docConfig.asset.length > 20) {
