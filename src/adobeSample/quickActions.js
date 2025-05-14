@@ -129,6 +129,19 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
     function imageQuickAction(qa_id) {
         let exportConfig = exportOptions;
         switch (qa_id) {
+            case 'convert-to-png':
+                if (docConfig.asset.length > 20) {
+                    exportConfig = exportOptions
+                        var pngData = docConfig.asset.data
+                            docConfig.asset.data = pngData.replace('image/png', 'image/jpeg')
+                            quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
+                } else {
+                    docConfig = {};
+                            exportConfig = exportOptions
+                            quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
+                }
+                break;
+
             case 'convert-to-jpg':
 		if (docConfig.asset.data.length > 20) {
                 	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
@@ -137,18 +150,9 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
                 	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
 		}
                 break;
-            case 'convert-to-png':
-		if (docConfig.asset.length > 20) {
-            exportConfig = exportOptions
-		        var pngData = docConfig.asset.data
-                	docConfig.asset.data = pngData.replace('image/png', 'image/jpeg')
-                	quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
-		} else {
-			docConfig = {};
-                    exportConfig = exportOptions
-                	quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
-		}
-                break;
+
+
+
             case 'convert-to-svg':
 		if (docConfig.asset.length > 20) {
                     exportConfig = exportOptions
