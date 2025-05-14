@@ -91,7 +91,7 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
             type: "image",
             },
         }
-    console.log('Image after conversion: ', pngData.substring(0,30))
+    console.log('Image after conversion: ', pngData)
 
     const appConfig = { callbacks: callbacks }
     const modalParams = {}
