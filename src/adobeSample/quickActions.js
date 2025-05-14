@@ -64,12 +64,12 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
     /* base64Asset: base64 representation we pass into QA function */
     try {
     	var base64Asset = await window.electronAPI.retrieveImage()
-	    console.log('Image: ', base64Asset)
+	console.log('Image: ', base64Asset.substring(0,30))
     } catch (error) {
-        console.log('No image supplied')
-        console.log(error)
-        docConfig = null
-        base64Asset = null
+	console.log('No image supplied')
+    console.log(error)
+	docConfig = null
+	base64Asset = null
     }
     /* appImage:  the image container displayed in sample */
     // var appImage = document.getElementById('image-container');
@@ -80,19 +80,6 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
         type: "image",
         },
     }
-
-    var jpegData = base64Asset
-    jpegData = base64Asset.replace('image/png', 'image/jpeg')
-
-    var docConfigPNG = {  
-        asset: {
-            data: jpegData,
-            dataType: "base64",
-            type: "image",
-            },
-        }
-    console.log('Image after conversion: ', jpegData)
-
     const appConfig = { callbacks: callbacks }
     const modalParams = {}
 
@@ -143,44 +130,41 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
         let exportConfig = exportOptions;
         switch (qa_id) {
             case 'convert-to-jpg':
-                if (docConfig.asset.data.length > 20) {
-                            quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
-                } else {
-                    docConfig = {};
-                            quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
-                    }
+		if (docConfig.asset.data.length > 20) {
+                	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
+		} else {
+			docConfig = {};
+                	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
+		}
                 break;
-
             case 'convert-to-png':
-                if (docConfig.asset.length > 20) {
-                            exportConfig = exportOptions
-                            console.log('launching png conversion with image')
-                            docConfig = {};
-                            quickAction.convertToPNG(docConfigPNG, appConfig, exportConfig, modalParams);
-                } else {
-                    docConfig = {};
-                    console.log('Launching png conversion without image')
+		if (docConfig.asset.length > 20) {
+            exportConfig = exportOptions
+		        var pngData = docConfig.asset.data
+                	docConfig.asset.data = pngData.replace('image/png', 'image/jpeg')
+                	quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
+		} else {
+			docConfig = {};
                     exportConfig = exportOptions
-                    quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
-                }
+                	quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
+		}
                 break;
-
             case 'convert-to-svg':
-                if (docConfig.asset.length > 20) {
-                            exportConfig = exportOptions
-                            quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
-                } else {
-                        docConfig = {};
-                        exportConfig = exportOptions
-                            quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
-                }
+		if (docConfig.asset.length > 20) {
+                    exportConfig = exportOptions
+                	quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
+		} else {
+			    docConfig = {};
+                exportConfig = exportOptions
+                	quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
+		}
                 break;
             case 'crop-image':
-		        docConfig = {}
+		docConfig = {}
                 quickAction.cropImage(docConfig, appConfig, exportConfig, modalParams);
                 break;
             case 'resize-image':
-		        docConfig = {}
+		docConfig = {}
                 quickAction.resizeImage(docConfig, appConfig, exportConfig, modalParams);
                 break;
             case 'remove-background':
