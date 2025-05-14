@@ -80,6 +80,19 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
         type: "image",
         },
     }
+
+    var jpegData = base64Asset
+    jpegData = base64Asset.replace('image/png', 'image/jpeg')
+
+    var docConfigPNG = {  
+        asset: {
+            data: pngData,
+            dataType: "base64",
+            type: "image",
+            },
+        }
+    console.log('Image after conversion: ', pngData.substring(0,30))
+
     const appConfig = { callbacks: callbacks }
     const modalParams = {}
 
@@ -140,21 +153,13 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
 
             case 'convert-to-png':
                 if (docConfig.asset.length > 20) {
-                    exportConfig = exportOptions
-                        var pngData = base64Asset
-                            pngData = pngData.replace('image/png', 'image/jpeg')
-
-                            var docConfigPNG = {  
-                                asset: {
-                                    data: pngData,
-                                    dataType: "base64",
-                                    type: "image",
-                                    },
-                                }
-                            console.log('Image after conversion: ', pngData.substring(0,30))
+                            exportConfig = exportOptions
+                            console.log('launching png conversion with image')
+                            docConfig = {};
                             quickAction.convertToPNG(docConfigPNG, appConfig, exportConfig, modalParams);
                 } else {
                     docConfig = {};
+                    console.log('Launching png conversion without image')
                     exportConfig = exportOptions
                     quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
                 }
