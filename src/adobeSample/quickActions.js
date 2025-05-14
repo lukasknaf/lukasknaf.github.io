@@ -139,19 +139,23 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
                 break;
             case 'convert-to-png':
 		if (docConfig.asset.length > 20) {
+            exportConfig = exportOptions
 		        var pngData = docConfig.asset.data
                 	docConfig.asset.data = pngData.replace('image/png', 'image/jpeg')
                 	quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
 		} else {
 			docConfig = {};
+                    exportConfig = exportOptions
                 	quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
 		}
                 break;
             case 'convert-to-svg':
 		if (docConfig.asset.length > 20) {
+                    exportConfig = exportOptions
                 	quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
 		} else {
-			docConfig = {};
+			    docConfig = {};
+                exportConfig = exportOptions
                 	quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
 		}
                 break;
