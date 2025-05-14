@@ -1,5 +1,5 @@
 import {getModule, getQuickActions} from '../services/ccEverywhere.js';
-var base64Asset = ""
+var base64Asset;
 (async () => {
     const initializeParams = {
         clientId: 'c8afc3542ba44b0f951f736e02c9b861',
