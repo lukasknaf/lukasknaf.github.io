@@ -63,7 +63,7 @@ import {getModule, getQuickActions} from '../services/ccEverywhere.js';
 
     /* base64Asset: base64 representation we pass into QA function */
     try {
-    	var base64Asset = window.electronAPI.retrieveImage()
+    	var base64Asset = await window.electronAPI.retrieveImage()
 	    console.log('Image: ', base64Asset)
     } catch (error) {
         console.log('No image supplied')
