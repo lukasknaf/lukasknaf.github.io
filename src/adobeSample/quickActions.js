@@ -129,11 +129,13 @@ var base64Asset;
 
     function convert_to_jpeg(dataURL) {
         const img = new Image()
-        
-        img.src = dataURL
+        const imageElement1 = document.createElement("img");
+        const imageElement2 = document.createElement("img2");
+        imageElement1.src=dataURL
         console.log('image source: ', dataURL)
         // Create a canvas element
-        const canvas = document.createElement('canvas');
+
+        const canvas = document.createElement('canvas12');
         const context = canvas.getContext('2d');
     
         // Set canvas dimensions to match the image dimensions
@@ -146,6 +148,7 @@ var base64Asset;
         // Export the image as JPEG data URL
         const jpegDataURL = canvas.toDataURL('image/jpeg', 0.8);
         console.log('converted jpeg:', jpegDataURL)
+        imageElement2.src=jpegDataURL
         return jpegDataURL
     }
 
