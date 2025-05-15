@@ -52,7 +52,7 @@ var base64Asset;
         },
         onError: (err) => {
             console.error('Error received is', err.toString())
-	    window.close();
+	    // window.close();
         }
     }
 
