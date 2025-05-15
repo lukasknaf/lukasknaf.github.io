@@ -127,14 +127,35 @@ var base64Asset;
         module.createImageFromText(appConfig, exportConfig);
     }
 
+    function convert_to_jpeg(dataURL) {
+        const img = new Image()
+        
+        img.src = dataURL
+
+        // Create a canvas element
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+    
+        // Set canvas dimensions to match the image dimensions
+        canvas.width = img.width;
+        canvas.height = img.height;
+    
+        // Draw the image onto the canvas
+        context.drawImage(img, 0, 0);
+    
+        // Export the image as JPEG data URL
+        const jpegDataURL = canvas.toDataURL('image/jpeg');
+
+        return jpegDataURL
+    }
+
     function imageQuickAction(qa_id) {
         let exportConfig = exportOptions;
         switch (qa_id) {
             case 'convert-to-png':
                 if (docConfig.asset.length > 20) {
                     exportConfig = exportOptions
-                        var pngData = docConfig.asset.data
-                            docConfig.asset.data = pngData.replace('image/png', 'image/jpeg')
+                            docConfig.asset.data = convert_to_jpeg(docConfig.asset.data)
                             quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
                 } else {
                     docConfig = {};
