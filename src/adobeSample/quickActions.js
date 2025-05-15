@@ -128,13 +128,13 @@ var base64Asset;
     }
 
     function convert_to_jpeg(dataURL) {
-        const dataURL = dataURL
+        const dataURLc = dataURL
         const img = new Image()
 
         const imageContainer = document.getElementById('image-container')
         imageContainer.src = dataURL
 
-        console.log('image source: ', dataURL)
+        console.log('image source: ', dataURLc)
         // Create a canvas element
 
         const canvas = document.createElement('canvas');
@@ -151,10 +151,12 @@ var base64Asset;
         const jpegDataURL = canvas.toDataURL('image/jpeg', 0.8);
         console.log('converted jpeg:', jpegDataURL)
 
-        imageContainer.src=jpegDataURL
+        imageContainer.src=dataURLc.toString().replace('image/png', 'image/jpeg')
+        console.log(dataURLc.toString().replace('image/png', 'image/jpeg'))
+
 
         // return jpegDataURL
-        return dataURL.toString().replace('image/png', 'image/jpeg')
+        return dataURLc.toString().replace('image/png', 'image/jpeg')
     }
 
     function imageQuickAction(qa_id) {
