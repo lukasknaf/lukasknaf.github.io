@@ -200,11 +200,12 @@ var base64Asset;
             case 'convert-to-svg':
 		if (docConfig.asset.data.length > 20) {
             console.log('Asset condition')
-            console.log(docConfig.asset.data)
+            console.log('asset data', docConfig.asset.data)
                     exportConfig = exportOptions
                 	quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
 		} else {
             console.log('Non-asset condition')
+            console.log('asset data', docConfig.asset.data)
 			    docConfig = {};
                 exportConfig = exportOptions
                 	quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
