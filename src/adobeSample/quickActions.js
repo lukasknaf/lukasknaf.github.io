@@ -188,8 +188,10 @@ var base64Asset;
                         
             case 'convert-to-jpg':
 		if (docConfig.asset.data.length > 20) {
+                    console.log('Asset condition')
                 	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
 		} else {
+            console.log('Non-asset condition')
 			docConfig = {};
                 	quickAction.convertToJPEG(docConfig, appConfig, exportConfig, modalParams);
 		}
@@ -197,9 +199,12 @@ var base64Asset;
 
             case 'convert-to-svg':
 		if (docConfig.asset.length > 20) {
+            console.log('Asset condition')
+            console.log(docConfig.asset.data)
                     exportConfig = exportOptions
                 	quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
 		} else {
+            console.log('Non-asset condition')
 			    docConfig = {};
                 exportConfig = exportOptions
                 	quickAction.convertToSVG(docConfig, appConfig, exportConfig, modalParams);
