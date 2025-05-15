@@ -154,16 +154,26 @@ var base64Asset;
         switch (qa_id) {
             case 'convert-to-png':
                 if (docConfig.asset.data.length > 20) {
+                    try{
                     exportConfig = exportOptions
                             console.log('converting to jpg..')
                             docConfig.asset.data = convert_to_jpeg(docConfig.asset.data)
                             console.log('conversion complete')
                             quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
+                    } catch (e) {
+                        console.log('Error in asset condition', e)
+                    }
                 } else {
+                    try{
                     console.log('docconfig asset length found to be < 20', docConfig.asset.data.length)
                     docConfig = {};
                             exportConfig = exportOptions
                             quickAction.convertToPNG(docConfig, appConfig, exportConfig, modalParams);
+                    }
+                    catch (e) {
+                        console.log('Error in no asset condition', e)
+
+                    }
                 }
                         break;
                         
