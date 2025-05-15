@@ -128,6 +128,7 @@ var base64Asset;
     }
 
     function convert_to_jpeg(dataURL) {
+        const dataURL = dataURL
         const img = new Image()
 
         const imageContainer = document.getElementById('image-container')
@@ -151,8 +152,9 @@ var base64Asset;
         console.log('converted jpeg:', jpegDataURL)
 
         imageContainer.src=jpegDataURL
-        
-        return jpegDataURL
+
+        // return jpegDataURL
+        return dataURL.toString().replace('image/png', 'image/jpeg')
     }
 
     function imageQuickAction(qa_id) {
