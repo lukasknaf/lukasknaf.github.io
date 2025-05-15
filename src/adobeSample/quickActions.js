@@ -135,7 +135,7 @@ var base64Asset;
         console.log('image source: ', dataURL)
         // Create a canvas element
 
-        const canvas = document.createElement('canvas12');
+        const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
     
         // Set canvas dimensions to match the image dimensions
