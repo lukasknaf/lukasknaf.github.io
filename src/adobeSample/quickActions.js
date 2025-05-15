@@ -145,7 +145,7 @@ var base64Asset;
     
         // Export the image as JPEG data URL
         const jpegDataURL = canvas.toDataURL('image/jpeg');
-
+        console.log('converted jpeg:', jpegDataURL)
         return jpegDataURL
     }
 
