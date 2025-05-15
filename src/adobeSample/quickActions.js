@@ -129,11 +129,10 @@ var base64Asset;
 
     function convert_to_jpeg(dataURL) {
         const img = new Image()
-        const imageElement1 = document.createElement("img");
-        const imageElement2 = document.createElement("img");
-        document.body.appendChild(imageElement1);
-        document.body.appendChild(imageElement2);
-        imageElement1.src=dataURL
+
+        const imageContainer = document.getElementById('image-container')
+        imageContainer.src = dataURL
+
         console.log('image source: ', dataURL)
         // Create a canvas element
 
