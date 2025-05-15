@@ -131,7 +131,7 @@ var base64Asset;
         const img = new Image()
         
         img.src = dataURL
-
+        console.log('image source: ', dataURL)
         // Create a canvas element
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
@@ -144,7 +144,7 @@ var base64Asset;
         context.drawImage(img, 0, 0);
     
         // Export the image as JPEG data URL
-        const jpegDataURL = canvas.toDataURL('image/jpeg');
+        const jpegDataURL = canvas.toDataURL('image/jpeg', 0.8);
         console.log('converted jpeg:', jpegDataURL)
         return jpegDataURL
     }
