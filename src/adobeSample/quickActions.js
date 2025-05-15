@@ -198,7 +198,7 @@ var base64Asset;
                 break;
 
             case 'convert-to-svg':
-		if (docConfig.asset.length > 20) {
+		if (docConfig.asset.data.length > 20) {
             console.log('Asset condition')
             console.log(docConfig.asset.data)
                     exportConfig = exportOptions
